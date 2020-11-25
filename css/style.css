@@ -1,0 +1,133 @@
+body{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.main-container{
+	background-color: #333;
+	min-width: 100vw;
+	min-height: 100vh;
+	text-align: center;
+}
+
+.game{
+	overflow: hidden;
+	border: solid 1px white;
+	display: inline-block;
+	min-width: 350px;
+	max-width: 350px;
+	min-height: 550px;
+	max-height: 550px;
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 5px;
+	background-color: #ddd;
+	box-shadow: 2px -2px 20px 1px #777;
+}
+
+.screen1{
+	/* display: none; */
+	position: relative;
+}
+
+.header{
+	display: flex;
+	color: white;
+	padding: 6px 10px;
+	background-color: #586;
+}
+
+.player1-stats{
+	flex-grow: 2;
+}
+
+.player1-name{
+	padding-right: 6px;
+}
+
+.player1-wins{
+
+}
+
+.player2-stats{
+	flex-grow: 2;
+}
+
+.player2-name{
+	padding-right: 6px;
+}
+
+.player2-wins{
+
+}
+
+.game-container{
+
+}
+
+.turn-text{
+	margin-top: 15px;
+}
+
+.game-body{
+	padding: 45px;
+}
+
+.row1, .row2, .row3{
+	display: flex;
+}
+
+.row1, .row2{
+	border-bottom: solid 2px black;
+}
+
+.row1 .click-btn:nth-child(1),
+.row1 .click-btn:nth-child(2),
+.row2 .click-btn:nth-child(1),
+.row2 .click-btn:nth-child(2),
+.row3 .click-btn:nth-child(1),
+.row3 .click-btn:nth-child(2){
+	border-right: solid 2px black;
+}
+
+.click-btn{
+	flex-grow: 2;
+	min-width: 60px;
+	min-height: 80px;
+}
+
+.click-btn i{
+	position: relative;
+	top: 25px;
+	font-size: 33px;
+}
+
+.fa-stop{
+	color: rgba(1,1,1, 0.05);
+}
+
+.row2{
+
+}
+
+.row3{
+
+}
+
+.footer{
+	margin-top: 30px;
+}
+
+.restart-button{
+	background-color: #19f;
+	border: solid 2px white;
+	border-radius: 4px;
+	padding: 4px 25px;
+	outline: none;
+}
+
