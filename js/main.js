@@ -113,86 +113,86 @@ $(document).ready( () => {
         }
         
     })
-})
 
 
-stringReplacement = ( string, replace_position, replace_with) => {
-    return string.substring(0, replace_position) + replace_with + string.substring(replace_position + 1);
-}
+    stringReplacement = ( string, replace_position, replace_with) => {
+        return string.substring(0, replace_position) + replace_with + string.substring(replace_position + 1);
+    }
 
-won = ( player_number ) => {
-    if( player_number === 1 ){
-        player1_wins++;
-        $('.player1-wins').text(player1_wins)
+    won = ( player_number ) => {
+        if( player_number === 1 ){
+            player1_wins++;
+            $('.player1-wins').text(player1_wins)
+            bootbox.alert({
+                message: player1 + ' won',
+                centerVertical: true
+            })
+            turn = 0;
+        }
+        else if( player_number === 2 ){
+            player2_wins++;
+            $('.player2-wins').text(player2_wins)
+            bootbox.alert({
+                message: player2 + ' won',
+                centerVertical: true
+            })
+            turn = 1;
+        }
+        resetGame();
+    }
+
+    tie = () => {
         bootbox.alert({
-            message: player1 + ' won',
+            message: 'Match draw!',
             centerVertical: true
         })
         turn = 0;
+        resetGame()
     }
-    else if( player_number === 2 ){
-        player2_wins++;
-        $('.player2-wins').text(player2_wins)
-        bootbox.alert({
-            message: player2 + ' won',
-            centerVertical: true
-        })
-        turn = 1;
-    }
-    resetGame();
-}
 
-tie = () => {
-    bootbox.alert({
-        message: 'Match draw!',
-        centerVertical: true
-    })
-    turn = 0;
-    resetGame()
-}
-
-checkForWinning = ( player_value ) => {
-    let split_values = player_value.split('')
-    let counter = 0;
-    for( i = 0; i<combinations; i++ ){
-        let wc_split = winning_combinations[i].split('')
-        for( j = 0; j < 9; j++ ){
-            if( wc_split[j] == 1 && split_values[j] == 1 ){
-                counter++
+    checkForWinning = ( player_value ) => {
+        let split_values = player_value.split('')
+        let counter = 0;
+        for( i = 0; i<combinations; i++ ){
+            let wc_split = winning_combinations[i].split('')
+            for( j = 0; j < 9; j++ ){
+                if( wc_split[j] == 1 && split_values[j] == 1 ){
+                    counter++
+                }
+            }
+            if( counter == 3 ){
+                return true;
+                break;
+            }
+            else{
+                counter = 0;
             }
         }
-        if( counter == 3 ){
-            return true;
-            break;
+        if( counter != 3 ){
+            return false;
+        }
+    }
+
+    resetGame = () => {
+        $('.click-btn').children('.far').removeClass('far').addClass('fas');
+        $('.click-btn').children('.fa-circle').removeClass('fa-circle').addClass('fa-stop');
+        $('.click-btn').children('.fa-times').removeClass('fa-times').addClass('fa-stop');
+        player1_values = '000000000'
+        player2_values = '000000000'
+        updateTurnText();
+        enableOnClick();
+    }
+
+    updateTurnText = ( ) => {
+        if( turn === 0 ){
+            $('.turn-text').text(player1 + "'s Turn")
         }
         else{
-            counter = 0;
+            $('.turn-text').text(player2 + "'s Turn")
         }
     }
-    if( counter != 3 ){
-        return false;
-    }
-}
 
-resetGame = () => {
-    $('.click-btn').children('.far').removeClass('far').addClass('fas');
-    $('.click-btn').children('.fa-circle').removeClass('fa-circle').addClass('fa-stop');
-    $('.click-btn').children('.fa-times').removeClass('fa-times').addClass('fa-stop');
-    player1_values = '000000000'
-    player2_values = '000000000'
-    updateTurnText();
-    enableOnClick();
-}
-
-updateTurnText = ( ) => {
-    if( turn === 0 ){
-        $('.turn-text').text(player1 + "'s Turn")
+    enableOnClick = () => {
+        $('.click-btn').attr('click', 'true')
     }
-    else{
-        $('.turn-text').text(player2 + "'s Turn")
-    }
-}
-
-enableOnClick = () => {
-    $('.click-btn').attr('click', 'true')
-}
+})
