@@ -76,7 +76,7 @@ $(document).ready( () => {
 
 /* Game JS */
 
-$(document).read( () => {
+$(document).ready( () => {
     $('.click-btn').click(function () {
         let clicked_btn = $(this).attr('btn-id');
         if( $(this).attr('click') == undefined || $(this).attr('click') == 'true'){
