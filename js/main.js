@@ -66,50 +66,55 @@ startGame = () => {
     $('.player2-wins').text(player2_wins)
 }
 
-
-$('.restart-button').click( () => {
-    location.reload();
+$(document).ready( () => {
+    $('.restart-button').click( () => {
+        location.reload();
+    })
 })
+
 
 
 /* Game JS */
 
-$('.click-btn').click(function () {
-    let clicked_btn = $(this).attr('btn-id');
-    if( $(this).attr('click') == undefined || $(this).attr('click') == 'true'){
-        $(this).attr('click', 'false');
-        if( turn === 0 ){
-            $(this).children('.fas').removeClass('fas').addClass('far');
-            $(this).children('.fa-stop').removeClass('fa-stop').addClass('fa-circle');
-        }
-        else{
-            $(this).children('.fa-stop').removeClass('fa-stop').addClass('fa-times');
-        }
-
-
-        if( turn === 0 ){
-            player1_values = stringReplacement( player1_values, clicked_btn - 1, '1');
-            turn = 1;
-            if( checkForWinning( player1_values ) ){
-                won(1);
+$(document).read( () => {
+    $('.click-btn').click(function () {
+        let clicked_btn = $(this).attr('btn-id');
+        if( $(this).attr('click') == undefined || $(this).attr('click') == 'true'){
+            $(this).attr('click', 'false');
+            if( turn === 0 ){
+                $(this).children('.fas').removeClass('fas').addClass('far');
+                $(this).children('.fa-stop').removeClass('fa-stop').addClass('fa-circle');
             }
-        }
-        else{
-            player2_values = stringReplacement( player2_values, clicked_btn - 1, '1');
-            turn = 0;
-            if( checkForWinning( player2_values ) ){
-                won(2);
+            else{
+                $(this).children('.fa-stop').removeClass('fa-stop').addClass('fa-times');
             }
-        }
-        player1_int_val = parseInt(player1_values)
-        player2_int_val = parseInt(player2_values)
-        if( player1_int_val + player2_int_val == '111111111' ){
-            tie();
-        }
-        updateTurnText();
-    }
     
+    
+            if( turn === 0 ){
+                player1_values = stringReplacement( player1_values, clicked_btn - 1, '1');
+                turn = 1;
+                if( checkForWinning( player1_values ) ){
+                    won(1);
+                }
+            }
+            else{
+                player2_values = stringReplacement( player2_values, clicked_btn - 1, '1');
+                turn = 0;
+                if( checkForWinning( player2_values ) ){
+                    won(2);
+                }
+            }
+            player1_int_val = parseInt(player1_values)
+            player2_int_val = parseInt(player2_values)
+            if( player1_int_val + player2_int_val == '111111111' ){
+                tie();
+            }
+            updateTurnText();
+        }
+        
+    })
 })
+
 
 stringReplacement = ( string, replace_position, replace_with) => {
     return string.substring(0, replace_position) + replace_with + string.substring(replace_position + 1);
