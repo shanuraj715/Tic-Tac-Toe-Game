@@ -97,26 +97,27 @@ body{
 
 .click-btn{
 	flex-grow: 2;
-	min-width: 60px;
-	min-height: 80px;
 }
 
 .click-btn i{
 	position: relative;
 	top: 25px;
 	font-size: 33px;
+	min-width: 70px;
+	min-height: 80px;
 }
 
 .fa-stop{
 	color: rgba(1,1,1, 0.05);
+	transition: 0.4s;
 }
 
-.row2{
-
+.fa-stop:hover{
+	color: rgba(1,1,1, 0.3);
 }
 
-.row3{
-
+.fa-times, .fa-circle{
+	transition: 0.5s;
 }
 
 .footer{
